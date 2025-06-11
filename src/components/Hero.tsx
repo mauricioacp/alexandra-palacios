@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 p-2">
             <div className="space-y-4">
               <div className="flex items-center space-x-2 text-purple-600">
                 <Star className="w-5 h-5 fill-current" />
