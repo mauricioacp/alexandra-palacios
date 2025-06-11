@@ -67,7 +67,7 @@ const Hero = () => {
           </div>
 
           {/* Image */}
-          <div className="relative space-y-4">
+          <div className="relative">
             <div className="relative z-10">
               <img 
                 src="/5-scaled.jpg" 
