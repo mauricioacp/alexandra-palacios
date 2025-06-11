@@ -1,28 +1,8 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import WhatsApp from './WhatsAppIcon';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const whatsappMessage = `Hola Alexandra, soy ${formData.name}. ${formData.message}. Mi email es ${formData.email} y mi teléfono ${formData.phone}.`;
-    const whatsappUrl = `https://wa.me/34614417513?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank');
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
     <section id="contacto" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,10 +15,10 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
+        <div className="max-w-4xl mx-auto">
+          {/* Contact Information Grid */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white rounded-2xl shadow-lg p-8">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
                 Información de Contacto
               </h3>
@@ -97,108 +77,74 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Quick Contact */}
-            <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6">
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">
-                Contacto Rápido
-              </h4>
-              <p className="text-gray-600 mb-6">
-                Para una respuesta más rápida, contáctame directamente por WhatsApp.
-              </p>
-              <a 
-                href="https://wa.me/34614417513?text=Hola%20Alexandra,%20me%20gustaría%20reservar%20una%20consulta"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition-colors font-medium"
-              >
-                <MessageCircle className="w-5 h-5" />
-                <span>WhatsApp</span>
-              </a>
+            {/* WhatsApp Contact Card */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl shadow-lg p-8">
+              <div className="text-center">
+                <div className="flex items-center justify-center w-20 h-20 bg-green-500 rounded-full mx-auto mb-6">
+                  <WhatsApp className="w-12 h-12 text-white" />
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                  Contacto Directo por WhatsApp
+                </h3>
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  La forma más rápida y cómoda de contactar conmigo. Te responderé lo antes posible para resolver tus dudas o programar tu cita.
+                </p>
+                
+                <div className="space-y-4">
+                  <a 
+                    href="https://wa.me/34614417513?text=Hola%20Alexandra,%20me%20gustaría%20reservar%20una%20consulta"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block w-full bg-green-500 text-white px-8 py-4 rounded-full hover:bg-green-600 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  >
+                    Reservar Consulta
+                  </a>
+                  
+                  <a 
+                    href="https://wa.me/34614417513?text=Hola%20Alexandra,%20tengo%20algunas%20preguntas%20sobre%20tus%20servicios"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block w-full border-2 border-green-500 text-green-600 px-8 py-4 rounded-full hover:bg-green-500 hover:text-white transition-all duration-300 font-semibold"
+                  >
+                    Hacer Consulta
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Additional Information */}
           <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-              Envíame un Mensaje
-            </h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Nombre completo *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors"
-                  placeholder="Tu nombre completo"
-                />
+            <div className="text-center">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                ¿Por qué elegir WhatsApp?
+              </h3>
+              <div className="grid md:grid-cols-3 gap-6 mt-8">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Clock className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Respuesta Rápida</h4>
+                  <p className="text-gray-600 text-sm">Te respondo en el menor tiempo posible</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Phone className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Comunicación Directa</h4>
+                  <p className="text-gray-600 text-sm">Habla directamente conmigo sin intermediarios</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <MapPin className="w-6 h-6 text-green-600" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Fácil y Cómodo</h4>
+                  <p className="text-gray-600 text-sm">Desde cualquier lugar y en cualquier momento</p>
+                </div>
               </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors"
-                  placeholder="tu@email.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Teléfono
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors"
-                  placeholder="Tu número de teléfono"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Mensaje *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-colors resize-none"
-                  placeholder="Cuéntame en qué puedo ayudarte..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-300 font-medium flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
-              >
-                <Send className="w-5 h-5" />
-                <span>Enviar Mensaje</span>
-              </button>
-            </form>
-
-            <p className="text-sm text-gray-600 mt-4 text-center">
-              Al enviar el formulario, serás redirigido a WhatsApp para completar el contacto.
-            </p>
+            </div>
           </div>
         </div>
       </div>
